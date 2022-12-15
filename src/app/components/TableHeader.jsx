@@ -16,7 +16,12 @@ const TableHeader = ({onSort,selectedSort, columns}) => {
       <thead>
          <tr>
             {Object.keys(columns).map((column) => (
-               <th key={column} onClick={() => handleSort(columns[column].iter)} scope="col">{columns[column].name}</th>))}
+               <th key={column} onClick={
+                  columns[column].iter
+                     ? () => handleSort(columns[column].iter)
+                     : undefined}
+                  {...{role:columns[column].iter&& "button" }}
+                  scope="col">{columns[column].name}</th>))}
         {/* <th onClick={()=>handleSort("name")} scope="col">Name</th>
         <th scope="col">Qualitys</th>
         <th onClick={()=>handleSort("profession.name")} scope="col">Profession</th>
