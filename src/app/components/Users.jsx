@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import api from "../api";
-import _ from "lodash"
+import _ from "lodash";
 import { paginate } from "../utils/paginate";
 import Pagination from "./Pagination";
 import GroupList from "./GroupList";
@@ -46,7 +46,7 @@ const Users = ({ users: allUsers, ...rest }) => {
    : allUsers;
    
    const count = filteredUsers.length;
-   const sortedUsers=_.orderBy(filteredUsers,[sortBy.iter], [sortBy.order]);
+   const sortedUsers=_.orderBy(filteredUsers,[sortBy.path], [sortBy.order]);
    const userCrop = paginate(sortedUsers, currentPage, pageSize)
    const clearFilter=()=>{
       setSelectedProf()

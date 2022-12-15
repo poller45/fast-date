@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SearchStatus = ({ length }) => {
     const renderPhrase = (number) => {
         const lastOne = Number(number.toString().slice(-1));
-        if (number > 4 && number < 15) {
+        if (number > 8 && number < 15) {
             return "WOW!!! So many people will meet";
         }
         if (lastOne === 1) return "Only one person will meet";

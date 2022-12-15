@@ -1,35 +1,49 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import User from './User';
 import TableHeader from './TableHeader';
+import TableBody from './TableBody';
+import BookMark from './Bookmark';
 
-const UserTable=({users, onSort, selectedSort,...rest})=>{
+const UserTable=({users, onSort, selectedSort,onToggleBookMark,onDelete,...rest})=>{
 
    const columns = {
-      name: { iter: 'name', name: "Name" },
+      name: { path: 'name', name: "Name" },
       qualitys: { name: 'Qualitys' },
-      profession: { iter: 'profession.name', name: 'Profession' },
-      completedMeetings: { iter: 'completedMeetings', name: "Meetings" },
-      rate: { iter:"rate", name:'Rate'},
-      bokmark: { iter: "bokmark", name: 'Favourites' },
-      delete:{}
+      profession: { path: 'profession.name', name: 'Profession' },
+      completedMeetings: { path: 'completedMeetings', name: "Meetings" },
+      rate: { path:"rate", name:'Rate'},
+      bokmark: {
+         path: "bookmark",
+         name: 'Favourites',
+         component: (user)=>(<BookMark
+                    status={user.bookmark}
+                    onClick={() => onToggleBookMark(user._id)}
+                />) },
+      delete: {component: (user) => (
+            <button
+               onClick={() => onDelete(user._id)}
+               className="btn btn-danger"
+            >
+            delete
+         </button>
+      )
+}
       
    
    }
 
 return <table className="table table-hover">
-   <TableHeader {...{onSort,selectedSort,columns}} />
-<tbody>
-    {users.map((user) => (
-        <User {...rest} {...user} key={user._id} />
-    ))}
-</tbody>
+   <TableHeader {...{ onSort, selectedSort, columns }} />
+   <TableBody {...{columns, data:users} } />
+
 </table>
 }
 UserTable.propTypes={
    users: PropTypes.array.isRequired,
    onSort: PropTypes.func.isRequired,
-   selectedSort: PropTypes.object.isRequired
+   selectedSort: PropTypes.object.isRequired,
+   onToggleBookMark: PropTypes.func.isRequired,
+   onDelete: PropTypes.func.isRequired
 }
 export default UserTable
