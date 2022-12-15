@@ -6,7 +6,7 @@ import TableHeader from './TableHeader';
 const Table = ({ onSort, selectedSort, columns, data, children}) => {
    return <table className="table table-hover">
       {children || (<>
-         <TableHeader {...{ onSort, selectedSort, columns }} />
+      <TableHeader {...{ onSort, selectedSort, columns }} />
       <TableBody {...{ columns, data}} />
       </>)}
       
