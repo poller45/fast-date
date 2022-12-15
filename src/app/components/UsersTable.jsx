@@ -1,10 +1,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableHeader from './TableHeader';
-import TableBody from './TableBody';
 import BookMark from './Bookmark';
 import QualitiesList from './QualitiesList';
+import Table from './Table';
 
 const UserTable=({users, onSort, selectedSort,onToggleBookMark,onDelete,...rest})=>{
 
@@ -30,16 +29,11 @@ const UserTable=({users, onSort, selectedSort,onToggleBookMark,onDelete,...rest}
          </button>
       )
 }
-      
-   
    }
 
-return <table className="table table-hover">
-   <TableHeader {...{ onSort, selectedSort, columns }} />
-   <TableBody {...{columns, data:users} } />
-
-</table>
+   return <Table {...{ onSort, selectedSort, columns, data:users }}/>
 }
+
 UserTable.propTypes={
    users: PropTypes.array.isRequired,
    onSort: PropTypes.func.isRequired,
