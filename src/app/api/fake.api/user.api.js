@@ -1,11 +1,4 @@
-const professions = {
-    doctor: { _id: "67rdca3eeb7f6fgeed471818", name: "Doctor" },
-    waiter: { _id: "67rdca3eeb7f6fgeed471820", name: "Waiter" },
-    physics: { _id: "67rdca3eeb7f6fgeed471814", name: "Physic" },
-    engineer: { _id: "67rdca3eeb7f6fgeed471822", name: "Ingeneer" },
-    actor: { _id: "67rdca3eeb7f6fgeed471824", name: "Actor" },
-    cook: { _id: "67rdca3eeb7f6fgeed471829", name: "Cook" }
-}
+import { professionsObject as professions } from "./professions.api";
 const qualities = {
     tedious: { _id: "67rdca3eeb7f6fgeed471198", name: "Tedious", color: "primary" },
     strange: { _id: "67rdca3eeb7f6fgeed471100", name: "Strange", color: "secondary" },
@@ -129,3 +122,13 @@ const users = [
 export function fetchAll() {
     return users
 }
+// const fetchAll = () =>
+//     new Promise((resolve) => {
+//         window.setTimeout(function () {
+//             resolve(users);
+//         }, 2000);
+//     });
+
+// export default {
+//     fetchAll
+// };
