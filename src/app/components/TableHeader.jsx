@@ -23,7 +23,6 @@ const TableHeader = ({onSort,selectedSort, columns}) => {
          else {
             return <FontAwesomeIcon icon={faArrowUp} />
          }
-         
       }
       return null
    }

@@ -6,12 +6,7 @@ import { faFaceGrin, faBookmark } from "@fortawesome/free-solid-svg-icons";
 const BookMark = ({ status, ...rest }) => {
     return (
         <button {...rest}>
-          
-          
           {status ? <FontAwesomeIcon icon={faBookmark} /> : <FontAwesomeIcon icon={faFaceGrin} />}
-         
-         
-          
         </button>
     );
 };
