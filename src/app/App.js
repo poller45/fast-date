@@ -1,7 +1,17 @@
 import React from "react";
-import Users from "./components/Users";
+import { Outlet } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 function App() {
-    return <Users />;
+    return (
+        <>
+            <main>
+                <div className="container">
+                    <NavBar />
+                    <Outlet />
+                </div>
+            </main>
+        </>
+    );
 }
 export default App;

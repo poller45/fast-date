@@ -2,10 +2,11 @@ import React,{useState, useEffect} from "react";
 import api from "../api";
 import _ from "lodash";
 import { paginate } from "../utils/paginate";
-import Pagination from "./Pagination";
-import GroupList from "./GroupList";
-import SearchStatus from "./SearchStatus"
-import UserTable from "./UsersTable";
+import Pagination from "../components/Pagination";
+import GroupList from "../components/GroupList";
+import SearchStatus from "../components/SearchStatus"
+import UserTable from "../components/UsersTable";
+
 
 
 const Users = () => {
@@ -76,7 +77,8 @@ const Users = () => {
       };
    
       return (
-        
+         <>
+          
          <div className="d-flex">
         
         
@@ -90,6 +92,7 @@ const Users = () => {
                   <button className={"btn btn-secondary mt-2"} onClick={clearFilter}>Clear</button>
                </div>)}
             <div className="d-flex flex-column">
+               
                <SearchStatus length={count} />
                {count > 0 && (
                
@@ -112,7 +115,7 @@ const Users = () => {
             </div>
           
          </div>
-        
+       </> 
       );
    }
    return "Loading...";
