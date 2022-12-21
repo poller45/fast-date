@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import BookMark from './Bookmark';
 import QualitiesList from './QualitiesList';
 import Table from './Table';
+import { Link } from 'react-router-dom';
 
 const UserTable=({users, onSort, selectedSort,onToggleBookMark,onDelete,...rest})=>{
 
    const columns = {
-      name: { path: 'name', name: "Name" },
+      name: { path: 'name', name: "Name", component: (user) => <Link to={`/users/${user._id}`}>{user.name}</Link>},
       qualitys: { name: 'Qualitys', component:(user)=> <QualitiesList qualities={user.qualities}/> },
       profession: { path: 'profession.name', name: 'Profession' },
       completedMeetings: { path: 'completedMeetings', name: "Meetings" },

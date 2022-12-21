@@ -8,6 +8,7 @@ import Login from "./app/layouts/login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Users from "./app/layouts/Users";
 import Main from "./app/layouts/main";
+import UsersList from "./app/components/UsersList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -21,11 +22,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "users",
-                element: <Users />
+                element: <UsersList />
             },
             {
                 path: "/",
                 element: <Main />
+            },
+            {
+                path: "users/:userId",
+                element: <Users />
             }
         ]
     }
