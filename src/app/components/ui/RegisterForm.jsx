@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { validator } from '../../utils/validator';
 import TextField from '../common/form/textField';
- 
-const LoginForm = () => {
-    const [data, setData] = useState({ email: "", password: "" });
+import api from "../../api"
+import SelectField from '../common/form/SelectField';
+import RadioField from '../common/form/RadioField';
+const RegisterForm = () => {
+   const [data, setData] = useState({
+      email: "",
+      password: "",
+      profession: "",
+      sex: "male"
+   });
+    const [professions, setProfession] = useState()
     const [errors, setErrors] = useState({});
+    useEffect(()=>{
+       
+      api.professions.fetchAll().then((data)=>setProfession(data))
+       
+      },[ ])
     const handleChange = ({ target }) => {
         setData((prevState) => ({
             ...prevState,
             [target.name]: target.value
         }));
     };
+
     const validatorConfig = {
         email: {
             isRequired: {
@@ -34,7 +48,12 @@ const LoginForm = () => {
                 message: "Пароль должен состоять минимум из 8 символов",
                 value: 8
             }
-        }
+       },
+       professions: {
+          isRequired: {
+              message: "Обязательно выберите вашу профессию"
+          }
+       }
     };
     useEffect(() => {
         validate();
@@ -69,6 +88,22 @@ const LoginForm = () => {
                             onChange={handleChange}
                             error={errors.password}
                         />
+                        <SelectField
+                        label="Choose your profession"
+                        onChange={handleChange}
+                        options={professions}
+                        defaultOption="Choose..."
+                        value={data.profession}
+                        error={errors.profession}             
+                        />
+                        <RadioField
+                        label="Sex"
+                        onChange={handleChange}
+                        options={[{name:"Male", value:"male"},{name:"Female", value:"female"},{name:"Other", value:"other"}]}
+                        value={data.sex}
+                        name="sex"
+                        />
+
                         <button
                             className="btn btn-primary w-100 mx-auto"
                             type="submit"
@@ -79,7 +114,6 @@ const LoginForm = () => {
                     </form>
       
     );
-};
-
+}
  
-export default LoginForm;
+export default RegisterForm;
