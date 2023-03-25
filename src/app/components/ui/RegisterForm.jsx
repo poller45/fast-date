@@ -4,21 +4,27 @@ import TextField from '../common/form/textField';
 import api from "../../api"
 import SelectField from '../common/form/SelectField';
 import RadioField from '../common/form/RadioField';
+import MultiSelectField from '../common/form/MultiSelectField';
+
+ 
 const RegisterForm = () => {
    const [data, setData] = useState({
       email: "",
       password: "",
       profession: "",
-      sex: "male"
+      sex: "male",
+      qualities:[]
    });
-    const [professions, setProfession] = useState()
+    const [professions, setProfession] = useState([])
     const [errors, setErrors] = useState({});
+    const [qualities, setQualities] = useState({})
     useEffect(()=>{
        
-      api.professions.fetchAll().then((data)=>setProfession(data))
+       api.professions.fetchAll().then((data) => setProfession(data))
+       api.qualities.fetchAll().then((data)=>setQualities(data))
        
       },[ ])
-    const handleChange = ({ target }) => {
+   const handleChange = (target) => {        
         setData((prevState) => ({
             ...prevState,
             [target.name]: target.value
@@ -69,19 +75,18 @@ const RegisterForm = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        console.log(data);
-    };
+        };
     return (
                     <form onSubmit={handleSubmit}>
                         <TextField
-                            label="Электронная почта"
+                            label="E-mail"
                             name="email"
                             value={data.email}
                             onChange={handleChange}
                             error={errors.email}
                         />
                         <TextField
-                            label="Пароль"
+                            label="Password"
                             type="password"
                             name="password"
                             value={data.password}
@@ -103,7 +108,11 @@ const RegisterForm = () => {
                         value={data.sex}
                         name="sex"
                         />
-
+                        <MultiSelectField
+                        options={qualities}
+                        onChange={handleChange}
+                        name='qualities'
+                        label="Choose your qualities"                        />
                         <button
                             className="btn btn-primary w-100 mx-auto"
                             type="submit"

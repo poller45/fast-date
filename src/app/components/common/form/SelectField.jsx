@@ -18,6 +18,9 @@ const SelectField = ({
          }))
       :
       options
+   const handleChange = ({target}) => {
+      onChange({name:target.name, value: target.value})       
+    };
    return (
       <div className="mb-4">
          <label htmlFor="validationCustom04" className="form-label">
@@ -29,7 +32,7 @@ const SelectField = ({
                name='profession'
                id="validationCustom04" 
                value={value}
-               onChange={onChange}
+               onChange={handleChange}
          >
           <option disabled value="">
             {defaultOption}
