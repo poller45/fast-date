@@ -4,6 +4,7 @@ import LoginForm from '../components/ui/LoginForm';
 import RegisterForm from '../components/ui/RegisterForm';
  
 const Login = () => {
+
    const {type} = useParams()
    const [formType, setFormType] = useState(type==="register"?type:"login")
    const toggleFormType = (params)=>{
@@ -44,5 +45,6 @@ return (
             </div>
         </div>
       )
-};
+
+  };
 export default Login;
