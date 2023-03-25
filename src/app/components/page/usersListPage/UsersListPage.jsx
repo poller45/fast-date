@@ -18,7 +18,6 @@ const UsersListPage = () => {
    const [sortBy,setSortBy]=useState({path:'name', order:'asc'}) 
    
    const pageSize = 8;
-   //const [users, setUsers] = useState(api.users.fetchAll());
 
    const [users, setUsers] = useState();
     useEffect(() => {
