@@ -52,7 +52,7 @@ const LoginForm = () => {
         if (!isValid) return;
         console.log(data);
     };
-    return (        
+    return (
                     <form onSubmit={handleSubmit}>
                         <TextField
                             label="Электронная почта"
@@ -70,13 +70,14 @@ const LoginForm = () => {
                             error={errors.password}
                         />
                         <button
-                            className="btn btn-primary w-100 mx-auto "
+                            className="btn btn-primary w-100 mx-auto"
                             type="submit"
                             disabled={!isValid}
                         >
                             Submit
                         </button>
-                    </form>            
+                    </form>
+      
     );
 };
 
