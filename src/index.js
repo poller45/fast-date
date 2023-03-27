@@ -9,7 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Users from "./app/layouts/Users";
 import Main from "./app/layouts/main";
 import UsersListPage from "./app/components/page/usersListPage";
-//import RegisterForm from "./app/components/ui/RegisterForm";
+import RegisterForm from "./app/components/ui/RegisterForm";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -21,10 +21,10 @@ const router = createBrowserRouter([
                 path: "login",
                 element: <Login />
             },
-            //    {
-            //       path: "register",
-            //       element: <RegisterForm />
-            //   },
+               {
+                  path: "register",
+                  element: <RegisterForm />
+              },
             {
                 path: "users",
                 element: <UsersListPage />
