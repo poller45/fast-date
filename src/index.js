@@ -10,6 +10,7 @@ import Users from "./app/layouts/Users";
 import Main from "./app/layouts/main";
 import UsersListPage from "./app/components/page/usersListPage";
 import RegisterForm from "./app/components/ui/RegisterForm";
+import EditUserPage from "./app/components/page/editUserPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
@@ -21,10 +22,10 @@ const router = createBrowserRouter([
                 path: "login",
                 element: <Login />
             },
-               {
-                  path: "register",
-                  element: <RegisterForm />
-              },
+            {
+                path: "register",
+                element: <RegisterForm />
+            },
             {
                 path: "users",
                 element: <UsersListPage />
@@ -34,8 +35,12 @@ const router = createBrowserRouter([
                 element: <Main />
             },
             {
-                path: "users/:userId",
+                path: "/users/:userId",
                 element: <Users />
+            },
+            {
+                path: "/users/:userId/edit",
+                element: <EditUserPage />
             }
         ]
     }
